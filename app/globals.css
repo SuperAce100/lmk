@@ -144,6 +144,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  code,
+  pre,
+  .font-mono {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  }
   h1,
   h2,
   h3,
