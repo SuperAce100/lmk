@@ -5,7 +5,10 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, Copy } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneLight, a11yDark as oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  gruvboxLight as oneLight,
+  a11yDark as oneDark,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import { cva } from "class-variance-authority";
 import { useTheme } from "next-themes";
 
@@ -76,7 +79,7 @@ export type CodeBlockProps = {
 export function CodeBlock({
   code,
   language = "tsx",
-  theme = "github-light",
+  theme = "one-light",
   className,
   title,
   children,
