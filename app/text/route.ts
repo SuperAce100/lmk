@@ -1,11 +1,13 @@
-import { NextResponse } from "next/server";
 import twilio from "twilio";
 
 export async function POST(request: Request) {
   const text = await request.text();
 
   if (text.trim() === "") {
-    return NextResponse.json({ ok: false, error: "text is required" }, { status: 400 });
+    return new Response("text is required", {
+      status: 400,
+      headers: { "Content-Type": "text/plain" },
+    });
   }
 
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -13,10 +15,10 @@ export async function POST(request: Request) {
   const from = process.env.TWILIO_FROM_NUMBER;
 
   if (!accountSid || !authToken || !from) {
-    return NextResponse.json(
-      { ok: false, error: "missing Twilio env vars" },
-      { status: 500 },
-    );
+    return new Response("server misconfigured", {
+      status: 500,
+      headers: { "Content-Type": "text/plain" },
+    });
   }
 
   const testHeader = request.headers.get("x-lmk-test");
@@ -31,11 +33,13 @@ export async function POST(request: Request) {
       body: text,
     });
 
-    return NextResponse.json({
-      ok: true,
-      sid: message.sid,
+    return new Response("Notified!", {
+      headers: { "Content-Type": "text/plain" },
     });
   } catch {
-    return NextResponse.json({ ok: false, error: "failed to send sms" }, { status: 500 });
+    return new Response("failed to send", {
+      status: 500,
+      headers: { "Content-Type": "text/plain" },
+    });
   }
 }
