@@ -9,8 +9,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LMK Notify",
-  description: "Notification service",
+  title: "lmk",
+  description: "Send me a text with an endpoint",
+  metadataBase: new URL("https://notify.asanshay.com"),
+  openGraph: {
+    title: "lmk",
+    description: "Send me a text with an endpoint",
+    url: "https://notify.asanshay.com",
+    siteName: "lmk",
+  },
 };
 
 export default function RootLayout({
