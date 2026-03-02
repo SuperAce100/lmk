@@ -54,11 +54,11 @@ const customDarkSyntaxTheme = {
   },
 };
 
-const codeBlockVariants = cva("text-card-foreground rounded-xl p-4 flex flex-col gap-2", {
+const codeBlockVariants = cva("text-card-foreground rounded-2xl p-4 flex flex-col gap-2", {
   variants: {
     variant: {
       flat: "bg-muted",
-      default: "border border-border bg-card",
+      default: "border border-border bg-card shadow-md shadow-shade/5",
     },
   },
   defaultVariants: {

@@ -23,6 +23,14 @@ export default function RootLayout({
       <body className="min-h-screen antialiased font-sans">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
+          <footer className="fixed bottom-0 left-0 right-0 flex justify-center gap-4 py-4 text-sm text-neutral-500">
+            <a href="/tos" className="hover:text-neutral-700">
+              Terms
+            </a>
+            <a href="/privacy" className="hover:text-neutral-700">
+              Privacy
+            </a>
+          </footer>
         </ThemeProvider>
       </body>
     </html>
