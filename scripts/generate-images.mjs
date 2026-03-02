@@ -30,7 +30,7 @@ const html = `<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #e5e5e5;
+      background: #f5f5f5;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", sans-serif;
     }
     .container {

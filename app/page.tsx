@@ -3,7 +3,7 @@ import { CodeBlock } from "@/components/ui/code-block";
 
 export default function Home() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-neutral-200 px-4">
+    <div className="flex h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-background px-4">
       <div className="flex max-w-sm flex-col items-start gap-2">
         <div className="flex items-center gap-1">
           <Image src="/logo.svg" alt="" width={64} height={64} priority className="-ml-2" />
@@ -13,7 +13,7 @@ export default function Home() {
           <p className="text-neutral-600">Send me a text with this endpoint</p>
         </div>
         <CodeBlock
-          code={`curl -X POST https://notify.asanshay.com/ \\
+          code={`curl -X POST https://lmk.asanshay.com/ \\
   -d 'hello from curl'`}
           language="bash"
           variant="flat"
