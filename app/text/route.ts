@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import twilio from "twilio";
 
 export async function POST(request: Request) {
-  const { text, test } = (await request.json()) as { text?: unknown; test?: unknown };
+  const text = await request.text();
 
-  if (typeof text !== "string" || text.trim() === "") {
+  if (text.trim() === "") {
     return NextResponse.json({ ok: false, error: "text is required" }, { status: 400 });
   }
 
@@ -19,8 +19,11 @@ export async function POST(request: Request) {
     );
   }
 
+  const testHeader = request.headers.get("x-lmk-test");
+  const isTest = ["true", "1", "yes"].includes(testHeader?.toLowerCase() ?? "");
+
   try {
-    const to = test === true ? "+18777804236" : "+14704952462";
+    const to = isTest ? "+18777804236" : "+14704952462";
     const client = twilio(accountSid, authToken);
     const message = await client.messages.create({
       from,

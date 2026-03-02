@@ -14,8 +14,7 @@ export default function Home() {
         </div>
         <CodeBlock
           code={`curl -X POST https://notify.asanshay.com/ \\
-  -H "Content-Type: application/json" \\
-  -d '{"text":"hello from curl"}'`}
+  -d 'hello from curl'`}
           language="bash"
           variant="default"
           className="w-full"
