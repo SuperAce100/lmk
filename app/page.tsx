@@ -16,7 +16,7 @@ export default function Home() {
           code={`curl -X POST https://notify.asanshay.com/ \\
   -d 'hello from curl'`}
           language="bash"
-          variant="default"
+          variant="flat"
           className="w-full"
         />
       </div>
