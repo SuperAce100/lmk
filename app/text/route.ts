@@ -13,8 +13,10 @@ export async function POST(request: Request) {
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
   const from = process.env.TWILIO_FROM_NUMBER;
+  const toNumber = process.env.LMK_TO_NUMBER;
+  const testNumber = process.env.LMK_TEST_NUMBER;
 
-  if (!accountSid || !authToken || !from) {
+  if (!accountSid || !authToken || !from || !toNumber || !testNumber) {
     return new Response("server misconfigured", {
       status: 500,
       headers: { "Content-Type": "text/plain" },
@@ -25,7 +27,7 @@ export async function POST(request: Request) {
   const isTest = ["true", "1", "yes"].includes(testHeader?.toLowerCase() ?? "");
 
   try {
-    const to = isTest ? "+18777804236" : "+14704952462";
+    const to = isTest ? testNumber : toNumber;
     const client = twilio(accountSid, authToken);
     const message = await client.messages.create({
       from,
